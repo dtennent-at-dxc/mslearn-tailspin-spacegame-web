@@ -24,8 +24,8 @@ stages:
         targetType: 'inline'
         script: |
           # Write your commands here
-          echo "The PWD is ${$PWD}
-          echo "the system.defaultworkingdirecotry is ${$SYSTEM_DEFAULTWORKINGDIRECTORY}
+          echo "The PWD is ${PWD}"
+          echo "the system.defaultworkingdirecotry is ${SYSTEM_DEFAULTWORKINGDIRECTORY}"
           echo "The AHDBURL is ${AHDBURL}"
           echo "The CLIENT is ${CLIENT}"
           echo "The DBURL is ${DBURL}"
@@ -33,10 +33,10 @@ stages:
           echo "The SPTARGET is ${SPTARGET}"
           ESCAPEDSRCDIR=$(/bin/sed 's/[&/\]/\\&/g' <<<"$SYSTEM_DEFAULTWORKINGDIRECTORY")
           echo $ESCAPEDSRCDIR
-          echo "${diiga-djt-dev-iiqdat}" > ./iiq.dat.txt
-          echo "${diiga-djt-dev-iiqcfg}" > ./iiq.cfg.txt
-          echo "${diiga-djt-dev-iiqdbuser-secret}" > ./iiqdbusersecret.txt
-          echo "${diiga-djt-dev-spadmin-secret}" > ./spadminsecret.txt
+          echo "${DIIGA-DJT-DEV-IIQDAT}" > ./iiq.dat.txt
+          echo "${DIIGA-DJT-DEV-IIQCFG}" > ./iiq.cfg.txt
+          echo "${DIIGA-DJT-DEV-IIQDBUSER-SECRET}" > ./iiqdbusersecret.txt
+          echo "${DIIGA-DJT-DEV-SPADMIN-SECRET}" > ./spadminsecret.txt
     - task: CopyFiles@2
       displayName: 'Copy Files to artifact staging directory'
       inputs:
