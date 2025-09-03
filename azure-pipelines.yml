@@ -13,7 +13,7 @@ stages:
 - stage: Build
   displayName: Build stage
   variables:
-    - group: 'secret-test'
+    - group: 'diiga-djt-dev-secrets-vg'
     - group: 'diiga-djt-dev-parameters-vg'
   jobs:  
   - job: Build
