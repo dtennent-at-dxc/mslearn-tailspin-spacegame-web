@@ -33,10 +33,15 @@ stages:
           echo "The SPTARGET is ${SPTARGET}"
           ESCAPEDSRCDIR=$(/bin/sed 's/[&/\]/\\&/g' <<<"$SYSTEM_DEFAULTWORKINGDIRECTORY")
           echo $ESCAPEDSRCDIR
-          echo "${DIIGA-DJT-DEV-IIQDAT}" > ./iiq.dat.txt
-          echo "${DIIGA-DJT-DEV-IIQCFG}" > ./iiq.cfg.txt
-          echo "${DIIGA-DJT-DEV-IIQDBUSER-SECRET}" > ./iiqdbusersecret.txt
-          echo "${DIIGA-DJT-DEV-SPADMIN-SECRET}" > ./spadminsecret.txt
+          echo "${IIQDATSECRET}" > ./iiq.dat.txt
+          echo "${IIQCFGSECRET}" > ./iiq.cfg.txt
+          echo "${DBUSERSECRET}" > ./iiqdbusersecret.txt
+          echo "${SPADMINSECRET}" > ./spadminsecret.txt
+      env:
+        IIQDATSECRET: ${diiga-djt-dev-iiqdat}
+        IIQCFGSECRET: ${diiga-djt-dev-iiqcfg}
+        DBUSERSECRET: ${diiga-djt-dev-iiqdbuser-secret}
+        SPADMINSECRET: ${diiga-djt-dev-spadmin-secret}
     - task: CopyFiles@2
       displayName: 'Copy Files to artifact staging directory'
       inputs:
