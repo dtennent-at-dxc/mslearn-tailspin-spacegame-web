@@ -34,7 +34,7 @@ stages:
         echo "the spadmin secret is $SPADMINSECRET"
         ESCAPEDSRCDIR=$(/bin/sed 's/[&/\]/\\&/g' <<<"$SYSTEM_DEFAULTWORKINGDIRECTORY")
         echo $ESCAPEDSRCDIR
-        echo "$IIQDATSECRET" > ./iiq.dat.txt
+        echo "$IIQDATSECRET" | base64 --decode > ./iiq.dat.jks
         echo "$IIQCFGSECRET" > ./iiq.cfg.txt
         echo "$DBUSERSECRET" > ./iiqdbusersecret.txt
         echo "$SPADMINSECRET" > ./spadminsecret.txt
