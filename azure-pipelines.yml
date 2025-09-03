@@ -40,10 +40,10 @@ stages:
         echo "$SPADMINSECRET" > ./spadminsecret.txt
       displayName: Running bash Script
       env:
-        IIQDATSECRET: ${diiga-djt-dev-iiqdat}
-        IIQCFGSECRET: ${diiga-djt-dev-iiqcfg}
-        DBUSERSECRET: ${diiga-djt-dev-iiqdbuser-secret}
-        SPADMINSECRET: ${diiga-djt-dev-spadmin-secret}
+        IIQDATSECRET: $(diiga-djt-dev-iiqdat)
+        IIQCFGSECRET: $(diiga-djt-dev-iiqcfg)
+        DBUSERSECRET: $(diiga-djt-dev-iiqdbuser-secret)
+        SPADMINSECRET: $(diiga-djt-dev-spadmin-secret)
     - task: CopyFiles@2
       displayName: 'Copy Files to artifact staging directory'
       inputs:
