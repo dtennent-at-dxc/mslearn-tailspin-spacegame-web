@@ -19,24 +19,26 @@ stages:
   - job: Build
     displayName: Build SSD
     steps:
-    - task: Bash@3
-      inputs:
-        targetType: 'inline'
-        script: |
-          # Write your commands here
-          echo "The PWD is ${PWD}"
-          echo "the system.defaultworkingdirecotry is ${SYSTEM_DEFAULTWORKINGDIRECTORY}"
-          echo "The AHDBURL is ${AHDBURL}"
-          echo "The CLIENT is ${CLIENT}"
-          echo "The DBURL is ${DBURL}"
-          echo "The PLUGINDBURL is ${PLUGINDBURL}"
-          echo "The SPTARGET is ${SPTARGET}"
-          ESCAPEDSRCDIR=$(/bin/sed 's/[&/\]/\\&/g' <<<"$SYSTEM_DEFAULTWORKINGDIRECTORY")
-          echo $ESCAPEDSRCDIR
-          echo "${IIQDATSECRET}" > ./iiq.dat.txt
-          echo "${IIQCFGSECRET}" > ./iiq.cfg.txt
-          echo "${DBUSERSECRET}" > ./iiqdbusersecret.txt
-          echo "${SPADMINSECRET}" > ./spadminsecret.txt
+    - bash: |
+        # Write your commands here
+        echo "The PWD is ${PWD}"
+        echo "the system.defaultworkingdirecotry is ${SYSTEM_DEFAULTWORKINGDIRECTORY}"
+        echo "The AHDBURL is ${AHDBURL}"
+        echo "The CLIENT is ${CLIENT}"
+        echo "The DBURL is ${DBURL}"
+        echo "The PLUGINDBURL is ${PLUGINDBURL}"
+        echo "The SPTARGET is ${SPTARGET}"
+        echo "The dat secret is $IIQDATSECRET" 
+        echo "The cfg secret is $IIQCFGSECRET" 
+        echo "The dbuser secret is $DBUSERSECRET" 
+        echo "the spadmin secret is $SPADMINSECRET"
+        ESCAPEDSRCDIR=$(/bin/sed 's/[&/\]/\\&/g' <<<"$SYSTEM_DEFAULTWORKINGDIRECTORY")
+        echo $ESCAPEDSRCDIR
+        echo "$IIQDATSECRET" > ./iiq.dat.txt
+        echo "$IIQCFGSECRET" > ./iiq.cfg.txt
+        echo "$DBUSERSECRET" > ./iiqdbusersecret.txt
+        echo "$SPADMINSECRET" > ./spadminsecret.txt
+      displayName: Running bash Script
       env:
         IIQDATSECRET: ${diiga-djt-dev-iiqdat}
         IIQCFGSECRET: ${diiga-djt-dev-iiqcfg}
